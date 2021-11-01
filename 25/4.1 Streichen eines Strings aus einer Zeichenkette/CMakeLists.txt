@@ -1,0 +1,6 @@
+cmake_minimum_required(VERSION 3.20)
+project(4_1_Streichen_eines_Strings_aus_einer_Zeichenkette C)
+
+set(CMAKE_C_STANDARD 99)
+
+add_executable(4_1_Streichen_eines_Strings_aus_einer_Zeichenkette main.c)
