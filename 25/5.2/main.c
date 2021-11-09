@@ -1,7 +1,15 @@
+/**********************************************************************\
+* Aufgabe 25.5.2
+*
+* Datum: 01.11.2021
+* Autor: Daniel Gran
+*
+\**********************************************************************/
+
 #include <stdio.h>
 
-static char NummerZuTag(int wochentag) {
-    static const char strings[] = {"Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Sonntag"};
+static char *NummerZuTag(int wochentag) {
+    static char *strings[] = {"Sonntag", "Modntag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Sonntag"};
     return strings[wochentag];
 }
 

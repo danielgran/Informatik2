@@ -13,11 +13,15 @@ int main() {
 
     int *zeigerarray[12];
 
+    int ********zeigerwahnsinn[43];
+
     int dasisteinwert = 4;
+
+    int **zeigerzeiger = zeigerarray;
 
     zeigerarray[3] = &dasisteinwert;
 
-    printf("%d", *zeigerarray[3]);
+    printf("%d", *zeigerzeiger[0]);
 
     return 0;
 }
