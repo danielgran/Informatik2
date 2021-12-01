@@ -1,27 +1,1 @@
-#include <stdio.h>
-
-
-
-int erg(int *array) {
-    return array[0] + array[1];
-
-}
-
-int main() {
-
-    int ar[2] = {12,3};
-
-    int *zeigerarray[12];
-
-    int ********zeigerwahnsinn[43];
-
-    int dasisteinwert = 4;
-
-    int **zeigerzeiger = zeigerarray;
-
-    zeigerarray[3] = &dasisteinwert;
-
-    printf("%d", *zeigerzeiger[0]);
-
-    return 0;
-}
+#include <stdio.h>int erg(int *array) {    return array[0] + array[1];}void tausche(int **arg1, int **arg2) {    int **hilf = arg1;    *arg1 = *arg2;    *arg2 = *hilf;}int main() {    int ar1[2] = {12,3};    int ar2[2] = {24,6};    tausche(&ar1, &ar2);    tausche(&ar1, &ar2);    //tausche(&zeigerarray, &zeigerzeiger);    printf("%d", ar1[0]);    return 0;}
