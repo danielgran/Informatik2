@@ -7,8 +7,9 @@ int main() {
 
 
     Complex h;
+    h.imag = 0;
 
-    addComplex(h, h);
+    printComplex(h);
 
     return 0;
 
