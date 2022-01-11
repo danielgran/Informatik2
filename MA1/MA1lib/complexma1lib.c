@@ -76,7 +76,7 @@ Complex divComplex(Complex x, Complex y) {
 * Lesbar formatierte Ausgabe einer komplexen Zahl
 \*--------------------------------------------------------------------*/
 int printComplex(Complex z) {
-    printf("(%.3f + %.3fi)", z.real, z.imag);
+    printf("(%.3f + %.3fi)\n", z.real, z.imag);
     return 1;
 }
 
