@@ -11,47 +11,54 @@
 #include <string.h>
 
 #define MAX 1000
+#define EINGABEN 2
 
-struct zahl {
-    int vor;
-    int nach;
+struct zahleneingabe {
+    char *vorkomma;
+    char *nachkomma;
+    float result;
 };
 
 int main() {
-    struct zahl eingabe1, eingabe2, summe;
-    int hilf = 0;
-    char str_eingabe1[MAX], str_eingabe2[MAX];
+    char *buffer, *eingabe;
     const char delimiter1 = ',';
-    const char delimiter2 = '0';
+    const char delimiter2 = '\n';
 
-    fflush(stdin);
-    printf("Bitte geben Sie die erste Zahl mit Komma separiert ein");
-    fgets(str_eingabe1, MAX, stdin);
+    int counter = 0;
+    float sum = 0;
 
-    fflush(stdin);
-    printf("Bitte geben Sie die zweite Zahl mit Komma separiert ein");
-    fgets(str_eingabe2, MAX, stdin);
+    eingabe = malloc(MAX * sizeof(char));
 
-    // Process these two numbers into the corresponding structs
-    eingabe1.vor = atoi(strtok(str_eingabe1, &delimiter1));
-    eingabe1.nach = atoi(strtok(NULL, &delimiter2));
-    eingabe2.vor = atoi(strtok(str_eingabe2, &delimiter1));
-    eingabe2.nach = atoi(strtok(NULL, &delimiter2));
+    struct zahleneingabe eingaben[MAX];
 
-    // Calculate the sum struct
-    int over = (eingabe1.nach + eingabe2.nach) % 10;
-    summe.vor = eingabe1.vor + eingabe2.vor + over;
-    summe.nach = over % 10;
+    for (int i = 0; i < EINGABEN; ++i) {
+        printf("Bitte die %d. Zahl eingeben (xx,xx): ", i);
+        fflush(stdin);
+        fgets(eingabe, MAX, stdin);
 
+        buffer = strtok(eingabe, &delimiter1);
+        eingaben[i].vorkomma = malloc(strlen(buffer) * sizeof(char));
+        strcpy(eingaben[i].vorkomma, buffer);
 
-    // (Optional) output with float
-    char *to_format = malloc(sizeof(char) * MAX);
-    sprintf(to_format, "%d.%d", summe.vor, summe.nach);
-    float erg = atof(to_format);
+        buffer = strtok(NULL, &delimiter2);
+        eingaben[i].nachkomma = malloc(strlen(buffer) * sizeof(char));
+        strcpy(eingaben[i].nachkomma, buffer);
+
+        counter++;
+    }
 
 
-    printf("Die Summe ist: %d,%d bzw %f", summe.vor, summe.nach, erg);
+    for (int i = 0; i < counter; ++i) {
 
+        // Convert the string pair into a single float
+        char *to_be_float = malloc((strlen(eingaben[i].vorkomma) + strlen(eingaben[i].nachkomma)) * sizeof(char) + 1);
+        sprintf(to_be_float, "%s.%s", eingaben[i].vorkomma, eingaben[i].nachkomma);
+        eingaben[i].result = atof(to_be_float);
 
+        sum += eingaben[i].result;
+
+    }
+
+    printf("Das Ergebnis ist %.5f\n", sum);
     return 0;
 }
